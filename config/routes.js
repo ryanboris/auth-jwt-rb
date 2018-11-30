@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const { authenticate } = require('./middlewares')
+const { authenticate, generateToken } = require('./middlewares')
 
 const db = require('../database/dbConfig.js')
 
@@ -28,8 +28,20 @@ async function register(req, res){
     res.status(500).json({ error: 'An error has occuried while trying to register with the database.' })
   }
 }
-function login(req, res){
-  // implement user login
+async function login(req, res){
+  try {
+    const creds = req.body
+    const user = await db('users').where('username', '=', creds.username).first()
+    if (user && bcrypt.compareSync(creds.password, user.password)) {
+      const token = generateToken(user)
+      res.status(201).json({ id: user.id, token })
+    } else {
+      res.status(401).json({ message: 'Unauthorized Request.  Please register for an account.' })
+    }
+  } catch (e) {
+    console.log(e)
+    res.status(500).json({ error: 'An error occuried while trying to attempt this process with the database.' })
+  }
 }
 
 function getJokes(req, res){
