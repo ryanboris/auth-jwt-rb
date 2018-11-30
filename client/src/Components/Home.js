@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faSignInAlt, faUserPlus)
@@ -34,6 +34,7 @@ const Container = styled.div`
 
 const SubText = styled.p`
   font-size: 10px;
+  cursor: pointer;
 `
 const Home = props => {
   return (
@@ -46,14 +47,24 @@ const Home = props => {
           }}>
           <FontAwesomeIcon icon={[ 'fas', 'sign-in-alt' ]} size='4x' />
         </button>
-          <SubText>Login</SubText>
+        <SubText
+          onClick={() => {
+            props.history.push('/signup')
+          }}>
+          Login
+        </SubText>
         <button
           onClick={() => {
             props.history.push('/signup')
           }}>
           <FontAwesomeIcon icon={[ 'fas', 'user-plus' ]} size='4x' />
         </button>
-          <SubText>Register</SubText>
+        <SubText
+          onClick={() => {
+            props.history.push('/signup')
+          }}>
+          Register
+        </SubText>
       </div>
     </Container>
   )

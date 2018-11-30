@@ -52,6 +52,7 @@ const Container = styled.div`
     height: 25px;
     border-radius: 15px;
     margin-top: 30px;
+    cursor: pointer;
   }
 `
 

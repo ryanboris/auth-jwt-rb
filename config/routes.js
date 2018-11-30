@@ -1,12 +1,13 @@
 const axios = require('axios')
-const cors = require('cors')
-const corsOptions = require('../server.js')
+
+
 
 const { authenticate, generateToken } = require('./middlewares')
 
 const db = require('../database/dbConfig.js')
 
 const bcrypt = require('bcryptjs')
+
 
 module.exports = server => {
   server.post('/api/register', register)
