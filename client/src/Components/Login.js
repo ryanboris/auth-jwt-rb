@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faCheck, faChevronLeft)
 
 const Container = styled.div`
   display: flex;
@@ -11,8 +14,8 @@ const Container = styled.div`
   align-items: center;
   height: 50vh;
   justify-content: center;
-  font-size: 14px;
-  font-family: Helvetica;
+  font-size: 32px;
+  font-family: PT Mono;
   max-width: 50%;
   margin: 0 auto;
 
@@ -43,7 +46,7 @@ const Container = styled.div`
   }
 
   button {
-    border: 2px solid black;
+    border: 0px;
     width: 100px;
     height: 25px;
     border-radius: 15px;
@@ -97,14 +100,16 @@ export default class Login extends Component {
             <input name='password' type='password' placeholder='password' onChange={this.handleChange} />
           </div>
           <button onClick={this.handleSubmit}>
-            <FontAwesomeIcon icon={faCheck} />
+          <FontAwesomeIcon icon={['fas', 'check']} size='2x' />
+          <p>Login</p>
           </button>
         </form>
         <button
           onClick={() => {
             this.props.history.push('/');
           }}>
-          <FontAwesomeIcon icon={faChevronLeft} />
+      <FontAwesomeIcon icon={['fas', 'chevron-left']} size='2x' />
+      <p>Go Back</p>
         </button>
       </Container>
     );
