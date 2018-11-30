@@ -1,4 +1,6 @@
 const axios = require('axios')
+const cors = require('cors')
+const corsOptions = require('../server.js')
 
 const { authenticate, generateToken } = require('./middlewares')
 

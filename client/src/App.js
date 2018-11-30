@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Register from './Components/Register';
 import './App.css';
+import Jokes from './Components/Jokes';
+import Unauthorized from './Components/Unauthorized';
+import Login from './Components/Login';
+import Home from './Components/Home';
+import { Route } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCheck, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faCheck, faChevronLeft)
+
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className='App'>
+        <Route exact path='/' component={Home} />
+        <Route path='/api/jokes' component={Jokes} />
+        <Route path='/signup' component={Register} />
+        <Route path='/signin' component={Login} />
+        <Route path='/unauthorized' component={Unauthorized} />
       </div>
     );
   }
